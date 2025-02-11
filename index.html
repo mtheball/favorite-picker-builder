@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Favorite Picker Builder</title>
+  </head>
+  <body>
+    <h1>Favorite Picker Builder</h1>
+    <p>An app that builds a Favorite Picker without having to edit code.</p>
+    <p>This project is based on the <a href="https://github.com/antialiasis/favorite-picker/">favorite-picker tool</a> by <a href="https://github.com/antialiasis">antialiasis</a>.</p>
+
+    <hr>
+
+    <form>
+        <label for="picker-title">What is the title of your Favorite Picker project?</label><br>
+        <input type="text" id="picker-title" name="picker-title">&ensp;<button type=button onclick="set_title()">Set Title</button>
+    </form>    
+    <br>
+    <form>
+        <label for="item_name">Enter each item to be included in the picker:</label><br>
+        <input type="text" id="item_name" name="item_name">&ensp;<button type=button onclick="add_item()">Add Item</button>
+    </form>
+
+    <div id="display-progress">
+
+    </div>
+
+    <script>
+        const picker_forms = {
+            title: document.getElementById('picker-title'),
+            item_name: document.getElementById('item_name')
+        }
+
+        var picker_data = {
+            title: "",
+            items: [
+                // to be populated via form
+            ]
+        };
+
+        function set_title() {
+            picker_data.title = document.getElementById('picker-title').value;
+            console.log(picker_data.title);
+        }
+
+        function add_item() {
+            let new_item = {};
+
+            if (picker_forms.item_name.value) {
+                new_item.name = document.getElementById('item_name').value;
+            }
+
+            picker_data.items.push(new_item);
+            console.log(picker_data);
+        }
+
+    </script>
+  </body>
+</html>
